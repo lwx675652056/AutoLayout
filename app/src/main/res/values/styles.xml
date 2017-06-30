@@ -1,0 +1,88 @@
+<resources>
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar"></style>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+
+    </style>
+    <!-- App主题 -->
+    <style name="MyAppTheme" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <!-- 布局的宽高尺寸 -->
+    <style name="layout_percent">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
+
+    <style name="layout_match">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="match_wrap">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="wrap_match">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="layout_wrap">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <!-- 横向分布 -->
+    <style name="layout_horizontal" parent="layout_match">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <!-- 纵向分布 -->
+    <style name="layout_vertical" parent="layout_match">
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <!-- 沉浸状态栏的设置 -->
+    <style name="immersion_status" parent="layout_match">
+        <item name="android:clipToPadding">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="maintags">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#C5E5FB</item>
+        <item name="android:shadowColor">#666666</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_marginRight">20px</item>
+        <item name="android:layout_marginLeft">20px</item>
+        <item name="android:layout_margin">20px</item>
+        <item name="android:drawablePadding">2dip</item>
+        <item name="android:button">@null</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="types_rb_style" parent="layout_horizontal">
+        <item name="android:textSize">30px</item>
+        <item name="android:textColor">@color/selector_service_type_text</item>
+        <item name="android:shadowColor">#666666</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_marginRight">30px</item>
+        <item name="android:layout_marginLeft">30px</item>
+        <item name="android:layout_margin">20px</item>
+        <item name="android:button">@null</item>
+    </style>
+
+</resources>

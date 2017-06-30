@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title_parentlayout"
+    android:layout_width="match_parent"
+    android:layout_height="90px"
+    android:background="@color/bg_bottomtab" >
+
+    <TextView
+        android:id="@+id/title_lefttextview"
+        style="@style/layout_wrap"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:text="左侧文字"
+        android:textColor="@color/gray_dark_text"
+        android:textSize="@dimen/text_tab_size"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/title_leftimageview"
+        style="@style/layout_wrap"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/dis10"
+        android:src="@mipmap/app_icon" />
+
+    <TextView
+        android:id="@+id/title_centertextview"
+        style="@style/layout_wrap"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:ellipsize="end"
+        android:focusableInTouchMode="true"
+        android:maxEms="13"
+        android:singleLine="true"
+        android:text="中间文字"
+        android:textColor="@color/gray_dark_text"
+        android:textSize="@dimen/text_tab_size" />
+
+    <ImageView
+        android:id="@+id/title_centerimageview"
+        style="@style/layout_wrap"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/title_righttextview"
+        style="@style/layout_wrap"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:paddingRight="20px"
+        android:text="右侧文字"
+        android:textColor="@color/gray_dark_text"
+        android:textSize="@dimen/text_tab_size"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/title_rightimageview"
+        style="@style/layout_wrap"
+        android:paddingRight="20px"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/title_bottomline"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/gray_line" />
+
+</RelativeLayout>
