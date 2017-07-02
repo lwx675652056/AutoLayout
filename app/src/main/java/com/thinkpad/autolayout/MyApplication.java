@@ -10,6 +10,10 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.thinkpad.autolayout.ui.activity.MainActivity;
 import com.thinkpad.autolayout.utils.ScreenUtils;
 
@@ -34,6 +38,7 @@ public class MyApplication extends Application {
 		mContextGlobal = this;
 		initParames();
 		initXutils();
+		initImageLoader(this);
 	}
 
 	private void initXutils() {
@@ -42,6 +47,16 @@ public class MyApplication extends Application {
 		x.Ext.setDebug(true);//上线时关闭
 	}
 
+	public static void initImageLoader(Context context) {
+		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
+				.threadPriority(Thread.NORM_PRIORITY - 2)
+				.denyCacheImageMultipleSizesInMemory()
+				.discCacheFileNameGenerator(new Md5FileNameGenerator())
+				.discCacheSize(50 * 1024 * 1024)
+				.tasksProcessingOrder(QueueProcessingType.LIFO)
+				.build();
+		ImageLoader.getInstance().init(config);
+	}
 	/**
 	 * @methods initParames
 	 * @description 必要参数的初始化
