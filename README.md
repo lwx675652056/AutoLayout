@@ -1,2 +1,3 @@
 # AndroidFrame
 这是一个android适配框架，加入了base基类、util工具类等，可以直接上手使用。
+集成了ImageLoader图片加载框架，没有网络和数据解析，这块可以根据需求自己挑合适自己的框架。
