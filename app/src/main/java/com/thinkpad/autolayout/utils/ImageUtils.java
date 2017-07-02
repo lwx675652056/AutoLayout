@@ -8,12 +8,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 
 /**
@@ -224,56 +232,56 @@ public class ImageUtils {
 	 * @methods setImageFromUrl
 	 * @description 描述信息
 	 * @date 2015-12-15 下午2:00:49
-	 * @param viewId
+	 * @param
 	 * @param url
 	 * @param defaultImageId
 	 * @return 参数说明 //int 默认图片，Imageview ,是那个控件
 	 */
-//	public static void setImageFromUrl(ImageView mView, String url, int defaultImageId) {
-//		try {
-//
-//			ImageLoader.getInstance().displayImage(
-//					url,
-//					mView,
-//					new DisplayImageOptions.Builder().showStubImage(defaultImageId).showImageForEmptyUri(defaultImageId)
-//							.showImageOnFail(defaultImageId).cacheInMemory().cacheOnDisc().resetViewBeforeLoading().build(), null);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
+	public static void setImageFromUrl(ImageView mView, String url, int defaultImageId) {
+		try {
+
+			ImageLoader.getInstance().displayImage(
+					url,
+					mView,
+					new DisplayImageOptions.Builder().showStubImage(defaultImageId).showImageForEmptyUri(defaultImageId)
+							.showImageOnFail(defaultImageId).cacheInMemory().cacheOnDisc().resetViewBeforeLoading().build(), null);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * 根据图片字节数组，对图片可能进行二次采样，不致于加载过大图片出现内存溢出
-	 * 
-//	 * @param bytes
+	 *
+	 * @param
 	 * @return
 	 */
-	// public static Bitmap getBitmapByBytes(byte[] bytes){
-	//
-	// //对于图片的二次采样,主要得到图片的宽与高
-	// int width = 0;
-	// int height = 0;
-	// int sampleSize = 1; //默认缩放为1
-	// BitmapFactory.Options options = new BitmapFactory.Options();
-	// options.inJustDecodeBounds = true; //仅仅解码边缘区域
-	// //如果指定了inJustDecodeBounds，decodeByteArray将返回为空
-	// BitmapFactory.decodeByteArray(bytes, 0, bytes.length, options);
-	// //得到宽与高
-	// height = options.outHeight;
-	// width = options.outWidth;
-	//
-	// //图片实际的宽与高，根据默认最大大小值，得到图片实际的缩放比例
-	// while ((height / sampleSize > Cache.IMAGE_MAX_HEIGHT)
-	// || (width / sampleSize > Cache.IMAGE_MAX_WIDTH)) {
-	// sampleSize *= 2;
-	// }
-	//
-	// //不再只加载图片实际边缘
-	// options.inJustDecodeBounds = false;
-	// //并且制定缩放比例
-	// options.inSampleSize = sampleSize;
-	// return BitmapFactory.decodeByteArray(bytes, 0, bytes.length, options);
-	// }
+//	 public static Bitmap getBitmapByBytes(byte[] bytes){
+//
+//	 //对于图片的二次采样,主要得到图片的宽与高
+//	 int width = 0;
+//	 int height = 0;
+//	 int sampleSize = 1; //默认缩放为1
+//	 BitmapFactory.Options options = new BitmapFactory.Options();
+//	 options.inJustDecodeBounds = true; //仅仅解码边缘区域
+//	 //如果指定了inJustDecodeBounds，decodeByteArray将返回为空
+//	 BitmapFactory.decodeByteArray(bytes, 0, bytes.length, options);
+//	 //得到宽与高
+//	 height = options.outHeight;
+//	 width = options.outWidth;
+//
+//	 //图片实际的宽与高，根据默认最大大小值，得到图片实际的缩放比例
+//	 while ((height / sampleSize > Cache.IMAGE_MAX_HEIGHT)
+//	 || (width / sampleSize > Cache.IMAGE_MAX_WIDTH)) {
+//	 sampleSize *= 2;
+//	 }
+//
+//	 //不再只加载图片实际边缘
+//	 options.inJustDecodeBounds = false;
+//	 //并且制定缩放比例
+//	 options.inSampleSize = sampleSize;
+//	 return BitmapFactory.decodeByteArray(bytes, 0, bytes.length, options);
+//	 }
 
 	// 保存Img的方法
 	public static File saveImage(Bitmap bmp, String imgPath, String imgName) {
@@ -301,20 +309,46 @@ public class ImageUtils {
 	 * @description 从本地设置图片
 	 * @date 2016-1-18 上午11:11:17 参数说明
 	 */
-//	public static void setImageFromFile(ImageView mView, String url, int defaultImageId) {
-//		// String imageUri = "http://site.com/image.png"; // 网络图片
-//		// String imageUri = "file:///mnt/sdcard/image.png"; //SD卡图片
-//		// String imageUri = "content://media/external/audio/albumart/13";媒体文件夹
-//		// String imageUri = "assets://image.png"; // assets
-//		// String imageUri = "drawable://" + R.drawable.image; // drawable文件
-//		url = "file://" + url;
-//		ImageLoader.getInstance().displayImage(
-//				url,
-//				mView,
-//				new DisplayImageOptions.Builder().showStubImage(defaultImageId).showImageForEmptyUri(defaultImageId)
-//						.showImageOnFail(defaultImageId).cacheInMemory().cacheOnDisc().resetViewBeforeLoading().build(),
-//				new ImageLoadingListenerImpl());
-//	}
+	public static void setImageFromFile(ImageView mView, String url, int defaultImageId) {
+		// String imageUri = "http://site.com/image.png"; // 网络图片
+		// String imageUri = "file:///mnt/sdcard/image.png"; //SD卡图片
+		// String imageUri = "content://media/external/audio/albumart/13";媒体文件夹
+		// String imageUri = "assets://image.png"; // assets
+		// String imageUri = "drawable://" + R.drawable.image; // drawable文件
+		url = "file://" + url;
+		ImageLoader.getInstance().displayImage(
+				url,
+				mView,
+				new DisplayImageOptions.Builder().showStubImage(defaultImageId).showImageForEmptyUri(defaultImageId)
+						.showImageOnFail(defaultImageId).cacheInMemory().cacheOnDisc().resetViewBeforeLoading().build(),
+				new ImageLoadingListenerImpl());
+	}
+
+	/**
+	 * @title:
+	 * @package com.vungu.fruit.adapter
+	 * @description: 监听图片异步加载
+	 * @author win64
+	 * @date 2015-8-24 上午11:54:14
+	 */
+	public static class ImageLoadingListenerImpl extends SimpleImageLoadingListener {
+
+		public static final List<String> displayedImages = Collections.synchronizedList(new LinkedList<String>());
+
+		@Override
+		public void onLoadingComplete(String imageUri, View view, Bitmap bitmap) {
+			if (bitmap != null) {
+				ImageView imageView = (ImageView) view;
+				boolean isFirstDisplay = !displayedImages.contains(imageUri);
+				if (isFirstDisplay) {
+					// 图片的淡入效果
+					FadeInBitmapDisplayer.animate(imageView, 500);
+					displayedImages.add(imageUri);
+				}
+			}
+		}
+
+	}
 
 	/**
 	 * 保存图片
